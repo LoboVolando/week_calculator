@@ -1,0 +1,39 @@
+{% load django_bootstrap5 %}
+{% load static %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+
+    <script src="{% url 'js-cat' %}"></script>
+    <script src="{% static '/admin/js/core.js' %}"></script>
+
+    <title>Get week</title>
+</head>
+<body>
+    <div style="margin: 50px auto; max-width: 880px;">
+        <h1 style="font-weight: 700; margin: 50px 0 50px">Get week info</h1>
+        <form action="/" method="post" class="form">
+            {% csrf_token %}
+            {{ form.media }}
+            {% bootstrap_form form %}
+            {% bootstrap_button button_type="submit" content="OK" %}
+        </form>
+        {% if week > 0 %}
+            <h2 style="margin-top: 15px; text-align: center;">Week number is {{ week }}</h2>
+        {% endif %}
+    </div>
+
+</body>
+</html>
