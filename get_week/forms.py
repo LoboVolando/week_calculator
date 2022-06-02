@@ -4,5 +4,7 @@ from django.contrib.admin.widgets import AdminDateWidget
 
 class DateForm(forms.Form):
     date = forms.DateField(
-        widget=AdminDateWidget
+        widget=AdminDateWidget(
+            attrs={'placeholder': '2020-12-12'}
+        )
     )
